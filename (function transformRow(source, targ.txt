@@ -1,0 +1,19 @@
+(function transformRow(source, target, map, log, isUpdate) {
+
+    // Get Employee ID from source data
+    var employeeId = source.u_employee_id;
+
+    // Check whether Employee ID is available
+    if (!employeeId) {
+        ignore = true;
+        log.info("Employee ID is missing. Record skipped.");
+        return;
+    }
+
+    // Example: set target fields
+    target.u_employee_id = employeeId;
+    target.u_name = source.u_employee_name;
+    target.u_email = source.u_email;
+    target.u_department = source.u_department;
+
+})(source, target, map, log, action === "update");
